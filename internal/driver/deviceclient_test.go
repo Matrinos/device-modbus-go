@@ -7,6 +7,7 @@
 package driver
 
 import (
+	"fmt"
 	"testing"
 	"time"
 
@@ -14,6 +15,7 @@ import (
 	"github.com/edgexfoundry/go-mod-core-contracts/v2/clients/logger"
 	"github.com/edgexfoundry/go-mod-core-contracts/v2/common"
 
+	sdk "github.com/edgexfoundry/device-sdk-go/v2/pkg/service"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -24,6 +26,14 @@ func init() {
 }
 
 func TestTransformDataBytesToResult_INT16(t *testing.T) {
+	dev, err := sdk.RunningService().GetDeviceByName("sample-json")
+	if err != nil {
+		err = fmt.Errorf("device not found:")
+
+	}
+
+	fmt.Println(dev)
+
 	req := models.CommandRequest{
 		DeviceResourceName: "light",
 		Type:               common.ValueTypeInt16,

@@ -1,5 +1,5 @@
 [Writable]
-LogLevel = "INFO"
+LogLevel = "DEBUG"
   # InsecureSecrets are required for when Redis is used for message bus
   [Writable.InsecureSecrets]
     [Writable.InsecureSecrets.Sample]
@@ -45,7 +45,7 @@ PublishTopicPrefix = "edgex/events/device" # /<device-profile-name>/<device-name
   [MessageQueue.Optional]
   # Default MQTT Specific options that need to be here to enable environment variable overrides of them
   # Client Identifiers
-  ClientId = "device-modbus"
+  ClientId = "localhost"
   # Connection information
   Qos = "0" # Quality of Sevice values are 0 (At most once), 1 (At least once) or 2 (Exactly once)
   KeepAlive = "10" # Seconds (must be 2 or greater)

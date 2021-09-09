@@ -9,12 +9,12 @@ package main
 import (
 	"github.com/edgexfoundry/device-sdk-go/v2/pkg/startup"
 
-	"github.com/edgexfoundry/device-modbus-go"
+	device_modbus "github.com/edgexfoundry/device-modbus-go"
 	"github.com/edgexfoundry/device-modbus-go/internal/driver"
 )
 
 const (
-	serviceName string = "device-modbus"
+	serviceName string = "device-modbus-local"
 )
 
 func main() {

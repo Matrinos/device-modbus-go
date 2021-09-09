@@ -13,6 +13,7 @@ import (
 	"time"
 
 	sdkModel "github.com/edgexfoundry/device-sdk-go/v2/pkg/models"
+	sdk "github.com/edgexfoundry/device-sdk-go/v2/pkg/service"
 	"github.com/edgexfoundry/go-mod-core-contracts/v2/clients/logger"
 	"github.com/edgexfoundry/go-mod-core-contracts/v2/models"
 )
@@ -225,6 +226,13 @@ func (d *Driver) Initialize(lc logger.LoggingClient, asyncCh chan<- *sdkModel.As
 	d.AsyncCh = asyncCh
 	d.addressMap = make(map[string]chan bool)
 	d.workingAddressCount = make(map[string]int)
+
+	fmt.Println("herer")
+
+	dev, _ := sdk.RunningService().GetDeviceByName("local-test")
+
+	fmt.Println("the name is " + dev.Labels[0] + dev.Labels[1])
+
 	return nil
 }
 
