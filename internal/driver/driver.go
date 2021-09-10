@@ -13,6 +13,7 @@ import (
 	"time"
 
 	sdkModel "github.com/edgexfoundry/device-sdk-go/v2/pkg/models"
+	sdk "github.com/edgexfoundry/device-sdk-go/v2/pkg/service"
 	"github.com/edgexfoundry/go-mod-core-contracts/v2/clients/logger"
 	"github.com/edgexfoundry/go-mod-core-contracts/v2/models"
 )
@@ -118,9 +119,16 @@ func (d *Driver) HandleReadCommands(deviceName string, protocols map[string]mode
 
 	defer deviceClient.CloseConnection()
 
+	dev, _ := sdk.RunningService().GetDeviceByName(deviceName)
+	labels := dev.Labels
+
 	// handle command requests
 	for i, req := range reqs {
 		res, err := handleReadCommandRequest(deviceClient, req)
+		if len(labels) > 0 {
+			res.Tags["thingID"] = labels[0]
+		}
+
 		if err != nil {
 			driver.Logger.Infof("Read command failed. Cmd:%v err:%v \n", req.DeviceResourceName, err)
 			return responses, err
