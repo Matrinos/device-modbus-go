@@ -2,7 +2,7 @@
 
 GO=CGO_ENABLED=0 GO111MODULE=on go
 GOCGO=CGO_ENABLED=1 GO111MODULE=on go
-GOBUILD=GOOS=linux GOARCH=amd64
+GOBUILD=GOOS=linux GOARCH=arm64
 
 MICROSERVICES=cmd/device-modbus
 
@@ -15,7 +15,6 @@ VERSION=$(shell cat ./VERSION 2>/dev/null || echo 0.0.0)
 
 GIT_SHA=$(shell git rev-parse HEAD)
 GOFLAGS=-ldflags "-X github.com/edgexfoundry/device-modbus-go.Version=$(VERSION)"
-GOARCH=arm64
 
 build: $(MICROSERVICES)
 

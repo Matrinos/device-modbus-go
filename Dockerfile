@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-ARG BASE=golang:1.16-alpine3.12
+ARG BASE="nexus3.edgexfoundry.org:10003/edgex-devops/edgex-golang-base-arm64:latest"
 FROM ${BASE} AS builder
 
 RUN sed -e 's/dl-cdn[.]alpinelinux.org/nl.alpinelinux.org/g' -i~ /etc/apk/repositories
