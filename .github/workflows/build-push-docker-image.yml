@@ -27,7 +27,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: matrinos/edgex-device-modbus
+          tags: matrinos/edgex-device-modbus:2.0.0
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
