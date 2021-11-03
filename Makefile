@@ -2,6 +2,7 @@
 
 GO=CGO_ENABLED=0 GO111MODULE=on go
 GOCGO=CGO_ENABLED=1 GO111MODULE=on go
+GOBUILD=GOOS=linux GOARCH=amd64
 
 MICROSERVICES=cmd/device-modbus
 
@@ -20,7 +21,7 @@ build: $(MICROSERVICES)
 
 cmd/device-modbus:
 	go mod tidy
-	$(GOCGO) build $(GOFLAGS) -o $@ ./cmd
+	$(GOBUILD) $(GOCGO) build $(GOFLAGS) -o $@ ./cmd
 
 test:
 	go mod tidy
