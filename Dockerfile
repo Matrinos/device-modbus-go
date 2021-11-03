@@ -44,9 +44,5 @@ COPY --from=builder /device-modbus-go/Attribution.txt /
 
 EXPOSE 59901
 
-# ENTRYPOINT ["/device-modbus"]
-# CMD ["--cp=consul://edgex-core-consul:8500", "--registry", "--confdir=/res"]
-
-
-ENTRYPOINT ["/bin/sh"]
-
+ENTRYPOINT ["/device-modbus"]
+CMD ["--cp=consul://edgex-core-consul:8500", "--registry", "--confdir=/res"]
